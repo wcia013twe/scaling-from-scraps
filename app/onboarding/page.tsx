@@ -10,6 +10,7 @@ import { PetPeevesStep } from '@/components/onboarding/steps/pet-peeves-step';
 import { JourneyTypeStep } from '@/components/onboarding/steps/journey-type-step';
 import { TimeCommitmentStep } from '@/components/onboarding/steps/time-commitment-step';
 import { FinalStep } from '@/components/onboarding/steps/final-step';
+import { Header } from '@/components/header';
 
 const steps = [
   NameStep,
@@ -28,14 +29,16 @@ export default function OnboardingPage() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Progress Bar */}
-      <div className="w-full p-6 bg-muted/30 border-b border-border">
-        <div className="max-w-2xl mx-auto">
-          <ProgressBar currentStep={currentStep} totalSteps={steps.length} />
-          <p className="text-center text-sm text-muted-foreground mt-2">
-            Step {currentStep + 1} of {steps.length}
-          </p>
+      <Header>
+        <div className="flex items-center justify-center w-full">
+          <div className="max-w-md w-full">
+            <ProgressBar currentStep={currentStep} totalSteps={steps.length} />
+            <p className="text-center text-sm text-muted-foreground mt-1">
+              Step {currentStep + 1} of {steps.length}
+            </p>
+          </div>
         </div>
-      </div>
+      </Header>
 
       {/* Step Content */}
       <div className="flex-1 flex items-center justify-center p-6">

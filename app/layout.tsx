@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
-import { ThemeToggle } from "@/components/theme-toggle";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -27,7 +26,6 @@ export default function RootLayout({
       >
         <Providers>
           {children}
-          <ThemeToggle />
         </Providers>
       </body>
     </html>

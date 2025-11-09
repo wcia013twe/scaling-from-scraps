@@ -12,9 +12,10 @@ interface JourneyNodeProps {
   status: DayStatus;
   progress?: LessonProgress;
   index: number;
+  isTarget?: boolean;
 }
 
-export function JourneyNode({ x, y, dayNumber, status, progress, index }: JourneyNodeProps) {
+export function JourneyNode({ x, y, dayNumber, status, progress, index, isTarget = false }: JourneyNodeProps) {
   const isClickable = status !== 'locked';
 
   // Status-based colors
@@ -63,8 +64,12 @@ export function JourneyNode({ x, y, dayNumber, status, progress, index }: Journe
         transition={{ delay: index * 0.08 + 0.1, duration: 0.4, type: 'spring' }}
         className="relative w-20 h-20 rounded-full flex items-center justify-center cursor-pointer"
         style={{
-          background: `linear-gradient(135deg, ${color.bg}, ${color.platform})`,
-          boxShadow: status === 'current'
+          background: isTarget
+            ? 'linear-gradient(135deg, #FFD700, #FFA500)'
+            : `linear-gradient(135deg, ${color.bg}, ${color.platform})`,
+          boxShadow: isTarget
+            ? '0 0 0 4px #FFD70044, 0 8px 24px #FFA50066, inset 0 -3px 8px rgba(0,0,0,0.2), 0 0 30px #FFD70066'
+            : status === 'current'
             ? `0 0 0 4px ${color.bg}44, 0 8px 24px ${color.bg}66, inset 0 -3px 8px rgba(0,0,0,0.2)`
             : `0 6px 20px ${color.platform}44, inset 0 -3px 8px rgba(0,0,0,0.2)`,
         }}
@@ -74,13 +79,17 @@ export function JourneyNode({ x, y, dayNumber, status, progress, index }: Journe
           {dayNumber}
         </span>
 
-        {/* Status icon (small, top-right) */}
-        <div
-          className="absolute -top-1 -right-1 w-6 h-6 rounded-full flex items-center justify-center"
-          style={{ backgroundColor: color.bg }}
-        >
-          <Icon className="w-3 h-3" style={{ color: color.icon }} />
-        </div>
+        {/* Status icon (small, top-right) - Target emoji for last day */}
+        {isTarget ? (
+          <div className="absolute -top-1 -right-1 text-2xl">🎯</div>
+        ) : (
+          <div
+            className="absolute -top-1 -right-1 w-6 h-6 rounded-full flex items-center justify-center"
+            style={{ backgroundColor: color.bg }}
+          >
+            <Icon className="w-3 h-3" style={{ color: color.icon }} />
+          </div>
+        )}
 
         {/* Progress ring for in-progress */}
         {status === 'in-progress' && (

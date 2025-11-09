@@ -8,6 +8,7 @@ import { useOnboardingStore } from '@/lib/onboarding-store';
 import { paths, recommendedPath } from '@/lib/paths-data';
 import { PathCard } from '@/components/paths/path-card';
 import { Button } from '@/components/ui/button';
+import { Header } from '@/components/header';
 
 export default function ChoosePathPage() {
   const router = useRouter();
@@ -37,18 +38,16 @@ export default function ChoosePathPage() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       {/* Header */}
-      <div className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 p-8 text-white">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h1 className="text-4xl font-bold mb-2">Choose Your Path</h1>
-            <p className="text-lg opacity-90">Select up to 2 income paths that resonate with you</p>
-          </motion.div>
-        </div>
-      </div>
+      <Header>
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h1 className="text-xl font-semibold">Choose Your Path</h1>
+          <p className="text-sm text-muted-foreground">Select up to 2 income paths that resonate with you</p>
+        </motion.div>
+      </Header>
 
       {/* Recommendation Banner */}
       <div className="bg-gradient-to-r from-lime to-green-400 p-4 shadow-md">

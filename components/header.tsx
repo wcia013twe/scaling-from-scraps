@@ -1,0 +1,20 @@
+'use client'
+
+import { ThemeToggle } from './theme-toggle'
+
+interface HeaderProps {
+  children: React.ReactNode
+}
+
+export function Header({ children }: HeaderProps) {
+  return (
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 ">
+      <div className="flex h-16 items-center justify-between px-6 w-full">
+        <div className="flex-1 flex items-center gap-4 align-center">
+          {children}
+        </div>
+        <ThemeToggle />
+      </div>
+    </header>
+  )
+}
