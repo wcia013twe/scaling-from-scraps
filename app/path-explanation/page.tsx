@@ -7,6 +7,7 @@ import { ArrowLeft, Sparkles, Rocket } from 'lucide-react';
 import { useOnboardingStore } from '@/lib/onboarding-store';
 import { getPathsByIds, Path } from '@/lib/paths-data';
 import { Button } from '@/components/ui/button';
+import { Header } from '@/components/header';
 
 export default function PathExplanationPage() {
   const router = useRouter();
@@ -39,9 +40,26 @@ export default function PathExplanationPage() {
     : paths[0].whyItFits;
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen flex flex-col bg-background">
+      <Header>
+        <div className="flex items-center gap-4">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => router.back()}
+            className="h-9 w-9"
+          >
+            <ArrowLeft size={20} />
+          </Button>
+          <div>
+            <h1 className="text-xl font-semibold">Path Explanation</h1>
+            <p className="text-sm text-muted-foreground">Your personalized income strategy</p>
+          </div>
+        </div>
+      </Header>
+
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-purple-600 via-pink-600 to-blue-600 text-white p-12">
+      <div className="bg-gradient-to-br from-[#003ac9] via-blue-500 to-[#adff02] dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 text-white p-12">
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: -20 }}

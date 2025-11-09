@@ -1,7 +1,7 @@
 // Upward S-curve position calculation (Candy Crush / Duolingo style)
 export function getNodePosition(index: number, totalNodes: number) {
   const verticalSpacing = 180;
-  const amplitude = 140; // Horizontal wave amplitude
+  const amplitude = 220; // Horizontal wave amplitude - increased from 140 to 220
 
   // Y goes upward (higher index = higher Y position)
   const y = index * verticalSpacing;

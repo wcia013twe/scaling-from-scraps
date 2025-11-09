@@ -63,7 +63,7 @@ export const useDashboardStore = create<DashboardState>()(
         });
       },
 
-      // Get status of a specific day
+      // Get status of a specific day - all days are accessible
       getDayStatus: (dayNumber: number): DayStatus => {
         const state = get();
 
@@ -75,11 +75,12 @@ export const useDashboardStore = create<DashboardState>()(
           return state.inProgressDays.has(dayNumber) ? 'in-progress' : 'current';
         }
 
-        if (dayNumber < state.currentDay) {
-          return state.inProgressDays.has(dayNumber) ? 'in-progress' : 'completed';
+        if (state.inProgressDays.has(dayNumber)) {
+          return 'in-progress';
         }
 
-        return 'locked';
+        // All days are accessible, return 'current' for未完成 days
+        return 'current';
       },
 
       // Unlock next day (called after completion)

@@ -22,15 +22,15 @@ export const RevenueStreamCard = ({ stream }: RevenueStreamCardProps) => {
   };
 
   return (
-    <div className="bg-card border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+    <div className="bg-card border rounded-xl p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow">
       {/* Icon and Title */}
       <div className="flex items-start justify-between mb-4">
-        <div className="flex items-center gap-3">
-          <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${stream.color} flex items-center justify-center text-2xl`}>
+        <div className="flex items-center gap-2 sm:gap-3">
+          <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-br ${stream.color} flex items-center justify-center text-xl sm:text-2xl`}>
             {stream.icon}
           </div>
           <div>
-            <p className="font-semibold text-foreground">{stream.name}</p>
+            <p className="font-semibold text-sm sm:text-base text-foreground">{stream.name}</p>
             <p className="text-xs text-muted-foreground">{stream.transactions} transactions</p>
           </div>
         </div>
@@ -38,8 +38,8 @@ export const RevenueStreamCard = ({ stream }: RevenueStreamCardProps) => {
 
       {/* Amount */}
       <div className="mb-3">
-        <p className="text-3xl font-bold text-foreground">{formatCurrency(stream.amount)}</p>
-        <p className="text-sm text-muted-foreground">{stream.percentOfTotal}% of total</p>
+        <p className="text-2xl sm:text-3xl font-bold text-foreground">{formatCurrency(stream.amount)}</p>
+        <p className="text-xs sm:text-sm text-muted-foreground">{stream.percentOfTotal}% of total</p>
       </div>
 
       {/* Growth Indicator */}
@@ -47,15 +47,15 @@ export const RevenueStreamCard = ({ stream }: RevenueStreamCardProps) => {
         {stream.growth >= 0 ? (
           <div className="flex items-center gap-1 text-green-600">
             <TrendingUp className="w-4 h-4" />
-            <span className="text-sm font-semibold">{formatPercentage(stream.growth)}</span>
+            <span className="text-xs sm:text-sm font-semibold">{formatPercentage(stream.growth)}</span>
           </div>
         ) : (
           <div className="flex items-center gap-1 text-red-600">
             <TrendingDown className="w-4 h-4" />
-            <span className="text-sm font-semibold">{formatPercentage(stream.growth)}</span>
+            <span className="text-xs sm:text-sm font-semibold">{formatPercentage(stream.growth)}</span>
           </div>
         )}
-        <span className="text-sm text-muted-foreground">from last month</span>
+        <span className="text-xs sm:text-sm text-muted-foreground">from last month</span>
       </div>
     </div>
   );

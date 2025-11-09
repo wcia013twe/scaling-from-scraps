@@ -1,11 +1,14 @@
 'use client';
 
 import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Sparkles, Target, TrendingUp, Clock, Mail, Calendar, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export default function ReadyToBeginPage() {
+  const router = useRouter();
+
   // Confetti effect using simple animated particles
   const confettiColors = ['#adff02', '#003ac9', '#ff6b6b', '#4ecdc4', '#ffe66d', '#a8dadc'];
   const confettiPieces = Array.from({ length: 50 }, (_, i) => ({
@@ -167,6 +170,7 @@ export default function ReadyToBeginPage() {
               size="lg"
               variant="outline"
               className="border-2 h-14 text-lg font-semibold"
+              onClick={() => router.push('/dashboard')}
             >
               View Dashboard
             </Button>
