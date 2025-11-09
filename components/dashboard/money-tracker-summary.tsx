@@ -50,7 +50,7 @@ export const MoneyTrackerSummary = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-gradient-to-br from-purple-600 via-pink-600 to-blue-600 rounded-2xl p-8 text-white shadow-xl"
+        className="bg-gradient-to-br from-[#003ac9] via-blue-500 to-[#adff02] dark:from-purple-600 dark:via-pink-600 dark:to-blue-600 rounded-2xl p-8 text-white shadow-xl"
       >
         <div className="flex items-start justify-between mb-6">
           <div>
@@ -83,7 +83,7 @@ export const MoneyTrackerSummary = () => {
       </motion.div>
 
       {/* Weekly Metrics Grid */}
-      <div className="grid md:grid-cols-3 gap-4">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* This Week */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -148,6 +148,29 @@ export const MoneyTrackerSummary = () => {
             <div>
               <p className="text-sm text-muted-foreground">Active Projects</p>
               <p className="text-3xl font-bold">{revenueSummary.activeProjects}</p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Key Performance Metrics */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className="bg-card border rounded-xl p-6 shadow-sm"
+        >
+          <div className="space-y-4">
+            <div>
+              <p className="text-sm text-muted-foreground">Content Engagement</p>
+              <p className="text-3xl font-bold">{revenueSummary.contentEngagement.toLocaleString()}</p>
+            </div>
+            <div>
+              <p className="text-sm text-muted-foreground">Year-to-Date</p>
+              <p className="text-2xl font-bold">{formatCurrency(revenueSummary.yearToDateSales)}</p>
+            </div>
+            <div>
+              <p className="text-sm text-muted-foreground">Lifetime Sales</p>
+              <p className="text-2xl font-bold">{formatCurrency(revenueSummary.lifetimeSales)}</p>
             </div>
           </div>
         </motion.div>

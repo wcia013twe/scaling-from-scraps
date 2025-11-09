@@ -57,6 +57,9 @@ export interface RevenueSummary {
   goals: RevenueGoal;
   totalClients: number;
   activeProjects: number;
+  contentEngagement: number; // Total content views/interactions
+  yearToDateSales: number;
+  lifetimeSales: number;
 }
 
 // Mock Data
@@ -301,6 +304,9 @@ export const revenueSummary: RevenueSummary = {
   goals: revenueGoals,
   totalClients: 6,
   activeProjects: 15,
+  contentEngagement: 47823, // Total views/interactions across all content
+  yearToDateSales: 324500,
+  lifetimeSales: 892000,
 };
 
 // Utility functions
